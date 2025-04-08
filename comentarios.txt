@@ -1,0 +1,10 @@
+node -v                        # Verifica a versão do Node.js instalada
+npm -v                         # Verifica a versão do NPM (gerenciador de pacotes)
+
+1. npm init -y                    # Cria um package.json com configurações padrão
+2. npm install -D playwright      # Instala o Playwright como dependência de desenvolvimento
+3. npx playwright install         # Faz o download dos navegadores usados nos testes (Chromium, Firefox e WebKit)
+
+
+## Testar ##
+npx playwright test --headed   # Executa os testes com o navegador visível (modo gráfico)
