@@ -45,8 +45,30 @@ test('Fluxo de compra da mochila', async ({ page }) => {
     await page.click('#item_4_title_link') // Seleciona a mochila
 
     // Verifica se a URL é da página de detalhes do item com Id 4 (mochila)
-    await expect(page).toHaveURL(/.*inventory-item.html?id=4/)
+    await expect(page).toHaveURL("https://www.saucedemo.com/inventory-item.html?id=4")
 
     // Verifica se o botão de voltar exibe o texto 'Back to products'
-    await expect(page.locator('#back-to_products')).toHaveText('Back to products')
+    await expect(page.locator('#back-to-products')).toHaveText('Back to products')
+
+    // ######################################
+
+    // Localiza o título do produto na página
+    const tituloProduto = page.locator('div.inventory_details_name.large_size')
+
+    // Verifica se o título do produto está visível na página
+    await expect(tituloProduto).toBeVisible();
+
+    // Verifica se o título do produto é 'Sauce Labs Backpack'
+    await expect(tituloProduto).toHaveText('Sauce Labs Backpack')
+
+    // ######################################
+
+    // Localiza o preço do produto na página
+    const precoProduto = page.locator('div.inventory_details_price')
+
+    // Verifica se o título do produto está visível na página
+    await expect(tituloProduto).toBeVisible();
+
+    // Verifica se o preço do produto é '$29.99'
+    await expect(precoProduto).toHaveText('$29.99')
 })
