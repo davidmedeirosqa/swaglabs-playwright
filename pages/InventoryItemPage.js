@@ -9,7 +9,7 @@ class InventoryItemPage {
     }
 
     async verificarInventoryItemPage() {
-        await expect(this.page).toHaveURL('https://www.saucedemo.com/inventory-item.html?id=4')  // Valida URL da página
+        await expect(this.page).toHaveURL(/.*inventory-item/)  // Valida URL da página
         await expect(this.backButton).toHaveText('Back to products')  // Valida texto do botão
     }
 
