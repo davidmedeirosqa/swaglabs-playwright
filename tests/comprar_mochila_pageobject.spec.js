@@ -10,7 +10,7 @@ const { CheckoutPage } = require('../pages/CheckoutPage')
 const registros = lerCsv('C:/Iterasys-projects/swaglabs144/fixtures/csv/massaProdutos.csv')
 
 
-for (const { user, password, sku, tituloProduto, precoProduto } of registros) {
+for (const { user, password, sku, tituloProduto, precoProduto, firstName, lastName, zipCode } of registros) {
     test(`Fluxo de compra da ${tituloProduto} - Page Object`, async ({ page }) => {  // Define caso de teste
         const loginPage = new LoginPage(page)  // Instancia LoginPage
         const inventoryPage = new InventoryPage(page)  // Instancia InventoryPage
@@ -33,7 +33,7 @@ for (const { user, password, sku, tituloProduto, precoProduto } of registros) {
         await cartPage.clickCheckout()
 
         await checkoutPage.verificarPaginaCheckout()
-        await checkoutPage.data("David", "Medeiros", "88888999")
+        await checkoutPage.data(firstName, lastName, zipCode)
         await checkoutPage.clickCheckout()
     })
 }
