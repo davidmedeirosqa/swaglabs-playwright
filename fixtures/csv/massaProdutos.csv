@@ -1,4 +1,2 @@
 user,password,sku,tituloProduto,precoProduto
 standard_user,secret_sauce,4,Sauce Labs Backpack,$29.99
-error_user,secret_sauce,0,Sauce Labs Bike Light,$9.99
-visual_user,secret_sauce,1,Sauce Labs Bolt T-Shirt,$15.99
