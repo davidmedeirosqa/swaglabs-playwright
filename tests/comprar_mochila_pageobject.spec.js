@@ -5,6 +5,8 @@ const { InventoryPage } = require('../pages/InventoryPage')  // Importa classe I
 const { InventoryItemPage } = require('../pages/InventoryItemPage')  // Importa classe InventoryItemPage
 const { CartPage } = require('../pages/CartPage')
 const { CheckoutPage } = require('../pages/CheckoutPage')
+const { OverviewPage } = require('../pages/OverviewPage')
+const { CompletePage } = require ('../pages/CompletePage')
 
 // Carrega os dados do arquivo CSV especificado e armazena na variável 'registros'
 const registros = lerCsv('C:/Iterasys-projects/swaglabs144/fixtures/csv/massaProdutos.csv')
@@ -17,6 +19,8 @@ for (const { user, password, sku, tituloProduto, precoProduto, firstName, lastNa
         const inventoryItemPage = new InventoryItemPage(page)  // Instancia InventoryItemPage
         const cartPage = new CartPage(page)
         const checkoutPage = new CheckoutPage(page)
+        const overviewPage = new OverviewPage(page)
+        const completePage = new CompletePage(page)
 
         await loginPage.goto('https://www.saucedemo.com/')  // Navega para URL de login
         await loginPage.login(user, password)  // Executa login com credenciais
@@ -35,5 +39,10 @@ for (const { user, password, sku, tituloProduto, precoProduto, firstName, lastNa
         await checkoutPage.verificarPaginaCheckout()
         await checkoutPage.data(firstName, lastName, zipCode)
         await checkoutPage.clickCheckout()
+
+        await overviewPage.verificarPaginaOverview()
+        await overviewPage.clickFinish()
+
+        await completePage.verificarPaginaComplete()
     })
 }
